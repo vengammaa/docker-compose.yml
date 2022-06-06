@@ -1,0 +1,20 @@
+version: "3" 
+services:
+   eureka-server:
+    image: eureka-server
+    ports:
+      - "8761:8761"
+
+   api_gateway:
+    image: api_gateway
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+
+   hys_dashboard:
+    image: hys_dashboard
+    ports:
+      - "9555:9555"
+    depends_on:
+      - eureka-server
